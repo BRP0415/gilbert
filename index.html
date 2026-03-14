@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gilbert | Total Domination</title>
+  <title>Gilbert</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -30,21 +30,20 @@
       width: 100%;
       max-width: 1300px; 
       margin: 0 auto; 
-      padding: 0 20px; /* Reduced padding for mobile */
+      padding: 0 20px; 
     }
 
     header {
-      min-height: 100vh; /* Changed from height to min-height */
+      min-height: 100vh;
       display: flex; flex-direction: column;
       justify-content: center; align-items: flex-start;
       padding: 60px 0;
     }
 
     .hero-title {
-      /* Adjusted clamp for better mobile scaling */
       font-size: clamp(3.5rem, 15vw, 12rem); 
       font-weight: 900; 
-      letter-spacing: -5px; /* Less aggressive on mobile */
+      letter-spacing: -5px; 
       line-height: 0.85; 
       margin-bottom: 20px; 
       filter: drop-shadow(0 0 20px var(--primary-glow));
@@ -95,10 +94,9 @@
 
     .btn-main:hover { transform: scale(1.05); filter: brightness(1.2); }
 
-    /* --- THE BENTO DESTRUCTION --- */
     .bento-grid {
       display: grid;
-      grid-template-columns: 1fr; /* Default to 1 column */
+      grid-template-columns: 1fr;
       gap: 20px; 
       padding-bottom: 100px;
     }
@@ -133,14 +131,13 @@
         overflow: visible;
     }
 
-    /* --- THE RE-ENGINEERED ROSETTE --- */
     .rosette-anchor {
         position: absolute; 
         top: -30px; 
         right: 20px;
         display: flex; flex-direction: column; align-items: center;
         filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
-        transform: scale(0.8); /* Slightly smaller for mobile */
+        transform: scale(0.8);
     }
 
     @media (min-width: 768px) {
@@ -179,7 +176,7 @@
 
     footer {
       padding: 60px 0; 
-      text-align: center; /* Center on mobile */
+      text-align: center;
       font-weight: 900;
       font-size: 1.5rem; 
       border-top: 2px solid var(--border);
@@ -204,7 +201,7 @@
       </h1>
       <p class="hero-subtitle">The best and cutest bot around.</p>
       <div class="cta-group">
-        <a href="#" class="btn-main">ADD TO SERVER</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1480713148733456404&permissions=2543637972184150&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer" class="btn-main">ADD TO SERVER</a>
         <a href="#" class="btn-main">SUPPORT SERVER</a>
       </div>
     </header>
@@ -239,7 +236,6 @@
   </div>
 
   <script>
-    // Particle script remains identical but with a 'resize' call immediately
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
