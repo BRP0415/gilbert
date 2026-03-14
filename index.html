@@ -15,7 +15,6 @@
       --text: #ffffff;
       --text-dim: #708570;
       --danger: #ff4757;
-      --info: #3498db;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -42,9 +41,9 @@
     }
 
     .hero-title {
-      font-size: clamp(3.5rem, 15vw, 12rem); 
+      font-size: clamp(3.2rem, 15vw, 11rem); 
       font-weight: 900; 
-      letter-spacing: -5px; 
+      letter-spacing: -4px; 
       line-height: 0.85; 
       margin-bottom: 20px; 
       filter: drop-shadow(0 0 20px var(--primary-glow));
@@ -102,12 +101,17 @@
       padding-bottom: 100px;
     }
 
-    @media (min-width: 900px) {
+    @media (min-width: 768px) {
       .bento-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
       }
-      .card-wide { grid-column: span 2; }
+    }
+
+    @media (min-width: 1100px) {
+      .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .card {
@@ -118,31 +122,34 @@
       transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      overflow: visible; 
     }
 
-    @media (min-width: 768px) {
-      .card { padding: 50px; }
+    .card:hover { 
+        border-color: var(--primary); 
+        box-shadow: 0 0 50px rgba(46, 204, 113, 0.1); 
+        transform: translateY(-5px);
     }
 
-    .card:hover { border-color: var(--primary); box-shadow: 0 0 50px rgba(46, 204, 113, 0.1); }
-
-    .card-anon {
-        padding-top: 80px; 
-        overflow: visible;
+    .card-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 20px;
+        color: var(--primary);
+        filter: drop-shadow(0 0 8px var(--primary-glow));
     }
+
+    .card-anon { padding-top: 80px; }
 
     .rosette-anchor {
-        position: absolute; 
-        top: -30px; 
-        right: 20px;
+        position: absolute; top: -30px; right: 20px;
         display: flex; flex-direction: column; align-items: center;
         filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
-        transform: scale(0.8);
+        transform: scale(0.7);
     }
 
     @media (min-width: 768px) {
-      .rosette-anchor { transform: scale(1); top: -45px; right: 40px; }
+      .rosette-anchor { transform: scale(0.85); top: -40px; right: 25px; }
     }
 
     .rosette {
@@ -164,32 +171,23 @@
       clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
     }
 
-    h3 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; }
-    p { font-size: 1.1rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 20px; }
+    h3 { font-size: 1.6rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+    p { font-size: 1rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 20px; }
 
     .badge {
         margin-top: auto;
-        padding: 10px 18px; font-weight: 900; font-size: 0.75rem;
-        text-transform: uppercase; display: inline-flex; align-items: center;
-        gap: 10px; transform: skewX(-10deg);
+        padding: 8px 15px; font-weight: 900; font-size: 0.65rem;
+        text-transform: uppercase; transform: skewX(-10deg);
         width: fit-content;
     }
-
     .badge-danger { background: var(--danger); color: #000; }
     .badge-info { background: var(--primary); color: #000; }
 
     footer {
-      padding: 60px 0; 
-      text-align: center;
-      font-weight: 900;
-      font-size: 1.5rem; 
-      border-top: 2px solid var(--border);
+      padding: 60px 0; text-align: center; font-weight: 900;
+      font-size: 1.5rem; border-top: 2px solid var(--border);
     }
-
-    @media (min-width: 768px) {
-      footer { text-align: right; font-size: 2rem; }
-    }
-
+    @media (min-width: 768px) { footer { text-align: right; font-size: 2rem; } }
     footer span { color: var(--primary); }
   </style>
 </head>
@@ -212,8 +210,9 @@
 
     <div class="bento-grid">
       <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <h3>Staff Systems</h3>
-        <p>Full-spectrum command over your internal team. Configure up to 5 staff ranks. Moderators can request promotions or leave while Managers handle the heavy lifting.</p>
+        <p>Full-spectrum command over your internal team. Configure up to 5 staff ranks with modular promotion requests.</p>
       </div>
 
       <div class="card card-anon">
@@ -221,30 +220,38 @@
             <div class="rosette"><b>Newest</b></div>
             <div class="tails"><div class="tail"></div><div class="tail"></div></div>
         </div>
-        <h3>Anonymous Messages</h3>
-        <p>Perfect for confessions or suggestions. Keep your community's voice heard while protecting their privacy.</p>
-        <div class="badge badge-danger">TOGGLED OFF BY DEFAULT</div>
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <h3>Anonymous Messaging</h3>
+        <p>Confessions or suggestions. Allow your users to speak their minds while maintaining absolute privacy.</p>
+        <div class="badge badge-danger">OFF BY DEFAULT</div>
       </div>
 
       <div class="card">
-        <h3>Moderation Logs</h3>
-        <p>Keep a paper trail of every action. Gilbert logs all moderation commands automatically so you never miss a beat.</p>
-        <div class="badge badge-info">USE /SET LOGS TO ENABLE</div>
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <h3>Mod Logs</h3>
+        <p>Comprehensive logging for every moderation command used within your server for full accountability.</p>
+        <div class="badge badge-info">/SET LOGS</div>
       </div>
 
       <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
         <h3>Invite Tracking</h3>
-        <p>Track growth in real-time. Gilbert identifies who invited who and maintains a leaderboard for your top recruiters.</p>
+        <p>See exactly who is inviting users and display it on a leaderboard to monitor growth.</p>
       </div>
 
       <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+            <line x1="13" y1="5" x2="13" y2="19" stroke-dasharray="3 3"/>
+        </svg>
         <h3>Ticket System</h3>
-        <p>Professional support made easy. Fully customizable ticket panels with channel transcripts and category sorting.</p>
+        <p>Custom panels with category sorting for professional server support.</p>
       </div>
 
-      <div class="card card-wide">
+      <div class="card">
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         <h3>Server Setup</h3>
-        <p>Deploy a professional server structure in seconds. The /server setup command creates all necessary channels and permissions for you.</p>
+        <p>Deploy a professional server structure in seconds. Build your entire foundation with one command.</p>
       </div>
     </div>
 
