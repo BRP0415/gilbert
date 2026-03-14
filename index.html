@@ -18,7 +18,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+    body { background-color: var(--bg); color: var(--text); overflow-x: hidden; width: 100%; }
 
     #particle-canvas {
       position: fixed; top: 0; left: 0;
@@ -26,62 +26,127 @@
       z-index: -1; pointer-events: none;
     }
 
-    /* --- INSANE TYPOGRAPHY --- */
-    .container { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
+    .container { 
+      width: 100%;
+      max-width: 1300px; 
+      margin: 0 auto; 
+      padding: 0 20px; /* Reduced padding for mobile */
+    }
 
     header {
-      height: 100vh; display: flex; flex-direction: column;
+      min-height: 100vh; /* Changed from height to min-height */
+      display: flex; flex-direction: column;
       justify-content: center; align-items: flex-start;
+      padding: 60px 0;
     }
 
     .hero-title {
-      font-size: clamp(5rem, 20vw, 14rem); font-weight: 900; letter-spacing: -10px;
-      line-height: 0.8; margin-bottom: 20px; filter: drop-shadow(0 0 30px var(--primary-glow));
+      /* Adjusted clamp for better mobile scaling */
+      font-size: clamp(3.5rem, 15vw, 12rem); 
+      font-weight: 900; 
+      letter-spacing: -5px; /* Less aggressive on mobile */
+      line-height: 0.85; 
+      margin-bottom: 20px; 
+      filter: drop-shadow(0 0 20px var(--primary-glow));
     }
+
+    @media (min-width: 768px) {
+      .hero-title { letter-spacing: -10px; }
+    }
+
     .hero-title span {
       display: block; background: linear-gradient(to right, #fff, var(--primary));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
     .hero-subtitle {
-        font-size: 1.5rem; color: var(--text-dim); max-width: 500px;
-        margin-bottom: 40px; border-left: 4px solid var(--primary); padding-left: 20px;
+        font-size: clamp(1.1rem, 2vw, 1.5rem); 
+        color: var(--text-dim); 
+        max-width: 500px;
+        margin-bottom: 40px; 
+        border-left: 4px solid var(--primary); 
+        padding-left: 20px;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      width: 100%;
     }
 
     .btn-main {
-      padding: 25px 60px; background: var(--primary); color: #000;
-      text-decoration: none; font-weight: 900; font-size: 1.2rem;
-      border-radius: 4px; clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
-      transition: 0.3s; display: inline-block;
+      padding: 20px 40px; 
+      background: var(--primary); 
+      color: #000;
+      text-decoration: none; 
+      font-weight: 900; 
+      font-size: 1rem;
+      border-radius: 4px; 
+      clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+      transition: 0.3s; 
+      display: inline-block;
+      text-align: center;
     }
+
+    @media (max-width: 480px) {
+      .btn-main { width: 100%; clip-path: none; border-radius: 8px; }
+    }
+
     .btn-main:hover { transform: scale(1.05); filter: brightness(1.2); }
 
     /* --- THE BENTO DESTRUCTION --- */
     .bento-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 30px; padding-bottom: 150px;
+      grid-template-columns: 1fr; /* Default to 1 column */
+      gap: 20px; 
+      padding-bottom: 100px;
+    }
+
+    @media (min-width: 900px) {
+      .bento-grid {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 30px;
+      }
+      .span-2 { grid-column: span 2; }
     }
 
     .card {
-      background: var(--card-bg); border: 2px solid var(--border);
-      padding: 60px; position: relative;
+      background: var(--card-bg); 
+      border: 2px solid var(--border);
+      padding: 40px 30px; 
+      position: relative;
       transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+
+    @media (min-width: 768px) {
+      .card { padding: 60px; }
+    }
+
     .card:hover { border-color: var(--primary); box-shadow: 0 0 50px rgba(46, 204, 113, 0.1); }
 
-    /* Fix for the Rosette being cut off */
     .card-anon {
-        padding-top: 100px; /* Give room for the ribbon */
+        padding-top: 80px; 
         overflow: visible;
     }
 
     /* --- THE RE-ENGINEERED ROSETTE --- */
     .rosette-anchor {
-        position: absolute; top: -45px; right: 40px;
+        position: absolute; 
+        top: -30px; 
+        right: 20px;
         display: flex; flex-direction: column; align-items: center;
         filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+        transform: scale(0.8); /* Slightly smaller for mobile */
     }
+
+    @media (min-width: 768px) {
+      .rosette-anchor { transform: scale(1); top: -45px; right: 40px; }
+    }
+
     .rosette {
       width: 90px; height: 90px; background: var(--primary);
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -94,34 +159,37 @@
     .rosette::before { transform: rotate(30deg); }
     .rosette::after { transform: rotate(60deg); }
     .rosette b { color: #000; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; text-align: center; }
-   
+    
     .tails { display: flex; gap: 10px; margin-top: -15px; }
     .tail {
       width: 25px; height: 60px; background: var(--primary);
       clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
     }
 
-    /* --- CONTENT --- */
-    h3 { font-size: 3rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -2px; }
-    p { font-size: 1.2rem; color: var(--text-dim); line-height: 1.5; }
+    h3 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; }
+    p { font-size: 1.1rem; color: var(--text-dim); line-height: 1.5; }
 
     .danger-stripe {
-        margin-top: 40px; background: #ff4757; color: #000;
-        padding: 15px 25px; font-weight: 900; font-size: 0.9rem;
+        margin-top: 30px; background: var(--danger); color: #000;
+        padding: 12px 20px; font-weight: 900; font-size: 0.8rem;
         text-transform: uppercase; display: inline-flex; align-items: center;
         gap: 10px; transform: skewX(-10deg);
+        width: fit-content;
     }
 
     footer {
-      padding: 100px 0; text-align: right; font-weight: 900;
-      font-size: 2rem; border-top: 2px solid var(--border);
+      padding: 60px 0; 
+      text-align: center; /* Center on mobile */
+      font-weight: 900;
+      font-size: 1.5rem; 
+      border-top: 2px solid var(--border);
     }
-    footer span { color: var(--primary); }
 
-    @media (max-width: 1000px) {
-        .bento-grid { grid-template-columns: 1fr; }
-        .hero-title { font-size: 6rem; }
+    @media (min-width: 768px) {
+      footer { text-align: right; font-size: 2rem; }
     }
+
+    footer span { color: var(--primary); }
   </style>
 </head>
 <body>
@@ -135,8 +203,10 @@
         <span>BY BRP0415</span>
       </h1>
       <p class="hero-subtitle">The best and cutest bot around.</p>
-      <a href="#" class="btn-main">ADD TO SERVER</a>
-      <a href="#" class="btn-main">SUPPORT SERVER</a>
+      <div class="cta-group">
+        <a href="#" class="btn-main">ADD TO SERVER</a>
+        <a href="#" class="btn-main">SUPPORT SERVER</a>
+      </div>
     </header>
 
     <div class="bento-grid">
@@ -157,8 +227,8 @@
         </div>
       </div>
 
-      <div class="card" style="grid-column: span 2;">
-        <h3> Server Setup</h3>
+      <div class="card span-2">
+        <h3>Server Setup</h3>
         <p>Why spend hours when you can spend seconds? The /server setup command removes the hassle and makes channels for you.</p>
       </div>
     </div>
@@ -169,6 +239,7 @@
   </div>
 
   <script>
+    // Particle script remains identical but with a 'resize' call immediately
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -186,7 +257,7 @@
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 4.5; // Fast
+        this.vx = (Math.random() - 0.5) * 4.5;
         this.vy = (Math.random() - 0.5) * 4.5;
         this.radius = Math.random() * 3 + 1;
       }
@@ -207,14 +278,14 @@
 
     function init() {
       resize();
+      particles = [];
       for (let i = 0; i < particleCount; i++) particles.push(new Particle());
-      animate();
     }
 
     function animate() {
-      ctx.fillStyle = 'rgba(1, 2, 1, 0.4)'; // Subtle trail
+      ctx.fillStyle = 'rgba(1, 2, 1, 0.4)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-     
+      
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
         p1.update();
@@ -239,6 +310,7 @@
       requestAnimationFrame(animate);
     }
     init();
+    animate();
   </script>
 </body>
 </html>
