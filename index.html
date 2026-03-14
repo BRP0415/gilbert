@@ -139,7 +139,7 @@
         filter: drop-shadow(0 0 8px var(--primary-glow));
     }
 
-    .card-anon { padding-top: 80px; }
+    .card-newest { padding-top: 80px; }
 
     .rosette-anchor {
         position: absolute; top: -30px; right: 20px;
@@ -204,22 +204,29 @@
       <p class="hero-subtitle">The best and cutest bot around.</p>
       <div class="cta-group">
         <a href="https://discord.com/oauth2/authorize?client_id=1480713148733456404&permissions=2543637972184150&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer" class="btn-main">ADD TO SERVER</a>
- <a href="https://discord.gg/7X5mb9Dg48" target="_blank" rel="noopener noreferrer" class="btn-main">SUPPORT SERVER</a>
+        <a href="https://discord.gg/7X5mb9Dg48" target="_blank" rel="noopener noreferrer" class="btn-main">SUPPORT SERVER</a>
       </div>
     </header>
 
     <div class="bento-grid">
+      <div class="card card-newest">
+        <div class="rosette-anchor">
+            <div class="rosette"><b>Newest</b></div>
+            <div class="tails"><div class="tail"></div><div class="tail"></div></div>
+        </div>
+        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7Z"/><path d="M9 21h6"/></svg>
+        <h3>Temp Voice Channels</h3>
+        <p>Give users their own customizable voice channels. Admins can set it up instantly.</p>
+        <div class="badge badge-info">/tempvc setup</div>
+      </div>
+
       <div class="card">
         <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <h3>Staff Systems</h3>
         <p>Full-spectrum command over your internal team. Configure up to 5 staff ranks with modular promotion requests.</p>
       </div>
 
-      <div class="card card-anon">
-        <div class="rosette-anchor">
-            <div class="rosette"><b>Newest</b></div>
-            <div class="tails"><div class="tail"></div><div class="tail"></div></div>
-        </div>
+      <div class="card">
         <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <h3>Anonymous Messaging</h3>
         <p>Confessions or suggestions. Allow your users to speak their minds while maintaining absolute privacy.</p>
@@ -246,12 +253,6 @@
         </svg>
         <h3>Ticket System</h3>
         <p>Custom panels with category sorting for professional server support.</p>
-      </div>
-
-      <div class="card">
-        <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        <h3>Server Setup</h3>
-        <p>Deploy a professional server structure in seconds. Build your entire foundation with one command.</p>
       </div>
     </div>
 
